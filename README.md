@@ -40,7 +40,7 @@ Para atacar este problema se crearon los DVCS (Distributed Version Control Syste
 </p>
 
 <br>
-# Git 
+<br>
 
 ![alt text](https://github.com/coneking/git_curso/blob/desarrollo/images/GitLogo.png)
 
@@ -48,6 +48,7 @@ Para atacar este problema se crearon los DVCS (Distributed Version Control Syste
 
 Git permite respaldar completamente un proyecto.<br>
 Permite trabajar localmente en un proyecto para posteriormente enviarlo al servidor remoto.<br>
+En administrar un proyecto en base a "ramas" de trabajo.
 Mediante el checksum, Git verifica si un archivo tuvo un cambio o no.<br>
         
 Por ejemplo, en un proyecto con 5 archivos, si sólo uno fue modificado, Git no guardará nuevamente los otros cuatro.
@@ -56,23 +57,23 @@ Simplemente revisará que no se hicieron cambios y hará una referencia al archi
 
 ## Estados de Git.
 
-1. Modificado (modify).
+1. Modificado (modified).
 2. Preparado (staged o added).
 3. Confirmado (committed).
 
 Ejemplo:
 
-* Modifico o creo el archivo "mi_archivo.txt" (modify).
+* Modifico o creo el archivo "mi_archivo.txt" (modified).
 ```
 echo "hola" > mi_archivo.txt
 ```
 
-* Añado el archivo al área de preparación (staged o added).
+* Preparo el archivo añadiéndolo al área de preparación (staged o added).
 ```
 git add mi_archivo.txt
 ```
 
-* Confirmo el cambio realizado, guardándolo como una instantánea en nuestro directorio local Git (commit).
+* Confirmo el cambio realizado, guardándolo como una instantánea en nuestro directorio local Git (committed).
 ```
 git commit -m "Mi primer commit" mi_archivo.txt
 ```
