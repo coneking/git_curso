@@ -33,8 +33,9 @@ Para atacar este problema se crearon los DVCS (Distributed Version Control Syste
 * Permiten administrar varios flujos de trabajo.
 <br>
 
-
-<p>![alt text](https://github.com/coneking/git_curso/blob/desarrollo/images/DVCS.png "DVCS Ejemplo")</p>
+<p align="center">
+![alt text](https://github.com/coneking/git_curso/blob/desarrollo/images/DVCS.png "DVCS Ejemplo")
+</p>
 
 # Git.
 
