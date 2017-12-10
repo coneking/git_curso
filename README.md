@@ -7,6 +7,7 @@ Muchas personas quizás utilizan el versionamiento sin saberlo.<br>
 ### ¿Cómo?
 Copiando archivos antes de modificarlos (backup).
 
+<br>
 ### ¿Qué es un control versiones?
 Bueno un VCS (Version Control System) es un sistema que verifica y registra si uno o varios archivos han tenido modificaciones.<br>
 Al registrar un cambio se puede volver a alguna de esas versiones anteriormente registradas.<br>
@@ -16,6 +17,7 @@ Al registrar un cambio se puede volver a alguna de esas versiones anteriormente 
 
 Para integrar la colaboración de más de una persona a la modificación de archivos (desarrolladores) se creó una versión mejorada de los VCSs, los CVCS (Centralized Version Control System).<br>
 
+<br>
 ## Centralized Version Control System (CVCS).
 Un CVCS utiliza un servidor central que contiene el proyecto, los usuarios descargan los archivos que necesitan para trabajarlo y posteriomente subirlos con los cambios efectuados.
 
@@ -29,7 +31,7 @@ Un CVCS utiliza un servidor central que contiene el proyecto, los usuarios desca
 Para atacar este problema se crearon los DVCS (Distributed Version Control System) como Git.
 
 **Ventajas:** 
-* Cada persona que trabaja en el proyecto tiene una copia instantanea de él localmente.
+* Cada persona que trabaja en el proyecto tiene una copia instantanea localmente.
 * Permiten administrar varios flujos de trabajo.
 <br>
 
@@ -37,10 +39,12 @@ Para atacar este problema se crearon los DVCS (Distributed Version Control Syste
 <img src="https://github.com/coneking/git_curso/blob/desarrollo/images/DVCS.png">
 </p>
 
-# Git.
+<br>
+# Git 
+![alt text](https://github.com/coneking/git_curso/blob/desarrollo/images/GitLogo.png "Git")<br>
 
-GitPermite respaldar completamente un proyecto.
-Permite trabajar localmente en un proyecto para posteriormente enviarlo al servidor remoto.
+Git permite respaldar completamente un proyecto.<br>
+Permite trabajar localmente en un proyecto para posteriormente enviarlo al servidor remoto.<br>
 Mediante el checksum, Git verifica si un archivo tuvo un cambio o no.<br>
         
 Por ejemplo, en un proyecto con 5 archivos, si sólo uno fue modificado, Git no guardará nuevamente los otros cuatro.
