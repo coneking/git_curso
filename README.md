@@ -34,7 +34,7 @@ Para atacar este problema se crearon los DVCS (Distributed Version Control Syste
 <br>
 
 
-![alt text](https://github.com/coneking/git_curso/tree/desarrollo/images/DVCS.png "Ejemplo")
+![alt text](https://github.com/coneking/git_curso/blob/desarrollo/images/DVCS.png)
 
 # Git.
 
@@ -55,15 +55,18 @@ Simplemente revisará que no se hicieron cambios y hará una referencia al archi
 Ejemplo:
 
 * Modifico o creo el archivo "mi_archivo.txt" (modify).
-```echo "hola" > mi_archivo.txt
+```
+echo "hola" > mi_archivo.txt
 ```
 
 * Añado el archivo al área de preparación (staged o added).
-```git add mi_archivo.txt
+```
+git add mi_archivo.txt
 ```
 
 * Confirmo el cambio realizado, guardándolo como una instantánea en nuestro directorio local Git (commit).
-```git commit -m "Mi primer commit" mi_archivo.txt
+```
+git commit -m "Mi primer commit" mi_archivo.txt
 ```
 
 
