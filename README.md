@@ -34,7 +34,7 @@ Para atacar este problema se crearon los DVCS (Distributed Version Control Syste
 <br>
 
 <p align="center">
-![alt text](https://github.com/coneking/git_curso/blob/desarrollo/images/DVCS.png "DVCS Ejemplo")
+<img src="https://github.com/coneking/git_curso/blob/desarrollo/images/DVCS.png">
 </p>
 
 # Git.
