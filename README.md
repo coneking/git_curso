@@ -26,7 +26,7 @@ Un CVCS utiliza un servidor central que contiene el proyecto, los usuarios desca
 **Desventaja:**
 * Único punto de falla. Si falla el servidor central, falla todo.
 <br>
-Para atacar este problema se crearon los DVCS (Distributed Version Control System) como GIT.
+Para atacar este problema se crearon los DVCS (Distributed Version Control System) como Git.
 
 **Ventajas:** 
 * Cada persona que trabaja en el proyecto tiene una copia instantanea de él localmente.
@@ -36,6 +36,34 @@ Para atacar este problema se crearon los DVCS (Distributed Version Control Syste
 
 ![alt text](https://github.com/coneking/git_curso/images/DVCS.png "Ejemplo")
 
-# GIT.
+# Git.
+
+GitPermite respaldar completamente un proyecto.
+Permite trabajar localmente en un proyecto para posteriormente enviarlo al servidor remoto.
+Mediante el checksum, Git verifica si un archivo tuvo un cambio o no.<br>
+        
+Por ejemplo, en un proyecto con 5 archivos, si sólo uno fue modificado, Git no guardará nuevamente los otros cuatro.
+Simplemente revisará que no se hicieron cambios y hará una referencia al archivo original, algo como un link simbólico.
+
+
+## Estados de Git.
+
+1. Modificado (modify).
+2. Preparado (staged o added).
+3. Confirmado (committed).
+
+Ejemplo:
+
+* Modifico o creo el archivo "mi_archivo.txt" (modify).
+```echo "hola" > mi_archivo.txt
+```
+
+* Añado el archivo al área de preparación (staged o added).
+```git add mi_archivo.txt
+```
+
+* Confirmo el cambio realizado, guardándolo como una instantánea en nuestro directorio local Git (commit).
+```git commit -m "Mi primer commit" mi_archivo.txt
+```
 
 
