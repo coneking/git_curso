@@ -41,7 +41,8 @@ Para atacar este problema se crearon los DVCS (Distributed Version Control Syste
 
 <br>
 # Git 
-![alt text](https://github.com/coneking/git_curso/blob/desarrollo/images/GitLogo.png "Git")<br>
+![alt text](https://github.com/coneking/git_curso/blob/desarrollo/images/GitLogo.png "Git")
+<br>
 
 Git permite respaldar completamente un proyecto.<br>
 Permite trabajar localmente en un proyecto para posteriormente enviarlo al servidor remoto.<br>
