@@ -5,9 +5,8 @@
 Muchas personas quizás utilizan el versionamiento sin saberlo.<br>
 
 ### ¿Cómo?
-Copiando archivos antes de modificarlos (backup).
+Copiando archivos antes de modificarlos (backup).<br>
 
-<br>
 ### ¿Qué es un control versiones?
 Bueno un VCS (Version Control System) es un sistema que verifica y registra si uno o varios archivos han tenido modificaciones.<br>
 Al registrar un cambio se puede volver a alguna de esas versiones anteriormente registradas.<br>
@@ -18,6 +17,7 @@ Al registrar un cambio se puede volver a alguna de esas versiones anteriormente 
 Para integrar la colaboración de más de una persona a la modificación de archivos (desarrolladores) se creó una versión mejorada de los VCSs, los CVCS (Centralized Version Control System).<br>
 
 <br>
+
 ## Centralized Version Control System (CVCS).
 Un CVCS utiliza un servidor central que contiene el proyecto, los usuarios descargan los archivos que necesitan para trabajarlo y posteriomente subirlos con los cambios efectuados.
 
