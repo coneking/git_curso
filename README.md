@@ -30,11 +30,11 @@ Para atacar este problema se crearon los DVCS (Distributed Version Control Syste
 
 **Ventajas:** 
 * Cada persona que trabaja en el proyecto tiene una copia instantanea de él localmente.
-* Permiten administrar varios flujos de trabajo mediante ramas.
+* Permiten administrar varios flujos de trabajo.
 <br>
 
 
-![alt text](https://github.com/coneking/git_curso/blob/desarrollo/images/DVCS.png)
+<p>![alt text](https://github.com/coneking/git_curso/blob/desarrollo/images/DVCS.png "DVCS Ejemplo")</p>
 
 # Git.
 
