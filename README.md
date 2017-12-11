@@ -8,13 +8,13 @@ Muchas personas quizás utilizan el versionamiento sin saberlo.<br>
 Copiando archivos antes de modificarlos (backup).<br>
 
 ### ¿Qué es un control versiones?
-Bueno un VCS (Version Control System) es un sistema que verifica y registra si uno o varios archivos han tenido modificaciones.<br>
-Al registrar un cambio se puede volver a alguna de esas versiones anteriormente registradas.<br>
+Un VCS (Version Control System) es un sistema que verifica y registra si uno o varios archivos han tenido modificaciones.<br>
+Al registrar un cambio se puede volver a alguna de esas versiones en cualquier momento.<br>
 
 **Desventaja:** 
 * Sólo una persona puede hacer cambios en los archivos a la vez (cambios locales).
 
-Para integrar la colaboración de más de una persona a la modificación de archivos (desarrolladores) se creó una versión mejorada de los VCSs, los CVCS (Centralized Version Control System).<br>
+Para integrar la colaboración de más de una persona a la modificación de archivos (desarrolladores) se creó una versión mejorada de los VCSs, los **CVCS** (Centralized Version Control System).<br>
 
 <br>
 
@@ -27,12 +27,13 @@ Un CVCS utiliza un servidor central que contiene el proyecto, los usuarios desca
 
 **Desventaja:**
 * Único punto de falla. Si falla el servidor central, falla todo.
-<br>
-Para atacar este problema se crearon los DVCS (Distributed Version Control System) como Git.
+
+Para atacar este problema se crearon los **DVCS** (Distributed Version Control System) como Git.<br>
 
 **Ventajas:** 
 * Cada persona que trabaja en el proyecto tiene una copia instantanea localmente.
 * Permiten administrar varios flujos de trabajo.
+
 <br>
 
 <p align="center">
@@ -46,13 +47,15 @@ Para atacar este problema se crearon los DVCS (Distributed Version Control Syste
 
 <br>
 
-Git permite respaldar completamente un proyecto.<br>
-Permite trabajar localmente en un proyecto para posteriormente enviarlo al servidor remoto.<br>
-En administrar un proyecto en base a "ramas" de trabajo.
+## Gestión Distribuida.
+
+* Git permite respaldar completamente un proyecto.
+* Trabajar localmente en un proyecto para posteriormente enviar sus cambios al servidor remoto.
+* Administrar un proyecto en base a "ramas" de trabajo.
+
 Mediante el checksum, Git verifica si un archivo tuvo un cambio o no.<br>
-        
 Por ejemplo, en un proyecto con 5 archivos, si sólo uno fue modificado, Git no guardará nuevamente los otros cuatro.
-Simplemente revisará que no se hicieron cambios y hará una referencia al archivo original, algo como un link simbólico.
+Simplemente revisará que no se hicieron cambios y hará una referencia al archivo original, algo como un link simbólico, generando una instantanea del proyecto.
 
 
 ## Estados de Git.
