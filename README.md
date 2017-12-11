@@ -57,6 +57,13 @@ Mediante el checksum, Git verifica si un archivo tuvo un cambio o no.<br>
 Por ejemplo, en un proyecto con 5 archivos, si sólo uno fue modificado, Git no guardará nuevamente los otros cuatro.
 Simplemente revisará que no se hicieron cambios y hará una referencia al archivo original, algo como un link simbólico, generando una instantanea del proyecto.
 
+<br>
+
+<p align="center">
+<img src="https://github.com/coneking/git_curso/blob/desarrollo/images/Fundamento.png">
+</p>
+
+<br>
 
 ## Estados de Git.
 
