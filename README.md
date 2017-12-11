@@ -42,6 +42,7 @@ Para atacar este problema se crearon los **DVCS** (Distributed Version Control S
 
 <br>
 <br>
+<br>
 
 ![alt text](https://github.com/coneking/git_curso/blob/desarrollo/images/GitLogo.png)
 
@@ -54,7 +55,7 @@ Para atacar este problema se crearon los **DVCS** (Distributed Version Control S
 * Administrar un proyecto en base a "ramas" de trabajo.
 
 Mediante el checksum, Git verifica si un archivo tuvo un cambio o no.<br>
-Por ejemplo, en un proyecto con 5 archivos, si sólo uno fue modificado, Git no guardará nuevamente los otros cuatro.
+Por ejemplo, en un proyecto con 3 archivos, si sólo uno fue modificado, Git no guardará nuevamente los otros dos.
 Simplemente revisará que no se hicieron cambios y hará una referencia al archivo original, algo como un link simbólico, generando una instantanea del proyecto.
 
 <br>
