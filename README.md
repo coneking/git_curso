@@ -63,7 +63,9 @@ Simplemente revisará que no se hicieron cambios y hará una referencia al archi
 <p align="center">
 <img src="https://github.com/coneking/git_curso/blob/desarrollo/images/Fundamento.png">
 </p>
+
 [^1]: La imagen muestra que en la segunda versión del proyecto hubieron cambios en los archivos A y C pero B no fue modificado por lo cual se hace una referencia del archivo B de la instantánea anterior.
+
 <br>
 
 ## Estados de Git.
