@@ -96,8 +96,14 @@ Al ejecutar `git commit` se abrirá el editor de texto predeterminado que tengam
 Esto nos servirá para saber que se hizo en ese commit, quien lo hizo y en que horario.
 Posiblemente si no han configurado su usuario y correo, git lo solicitará antes de hacer un commit, pues como dije el commit debe mostrar quien hizo el cambio.
 
-	git config --global user.name "Usuario"
-	git config --global user.email "Correo"
+	$ git config --global user.name "Usuario"
+	$ git config --global user.email "Correo"
+
+<br>
+
+Una manera más rápida de hacer un commit es con la opción "-m", con esto no se abrirá el editor y sólo podremos poner un título al commit.
+
+	$ git commit -m "Título" archivo
 
 <br>
 
@@ -113,27 +119,31 @@ Para más información `git log --help` los enviará al manual del comando.
 
 	$ git log
 
-Para una mirada un poco más limpia podemos ejecutar el comando git log con el parámetro --oneline.
+Para una mirada un poco más limpia podemos ejecutar el comando git log con el parámetro `--oneline`.
 
 	$ git log --oneline
 
 La vista es mucho más simple y muestra lo necesario, el ID del commit, el comentario del commit, si tuviese un tag también lo mostraría.
 Un tag es un identificador que le podemos dar al commit para no tener que acordarnos del id que se crea por defecto y simplificarnos un poco más la lectura.
 
+<br>
 
-Dígamos ahora que tengo más archivos.
+## Agregando más commits
+
+Dígamos ahora que tenemos más archivos.
 	
 	for i in archivo2.txt archivo3.txt archivo4.txt; do echo "línea de prueba" >> $i; done
 
-Ahora en mi directorio de trabajo tengo cuatro archivos pero git sólo reconoció cambios en tres (los nuevos que cree).
+Ahora en nuestro directorio de trabajo tenemos cuatro archivos pero git sólo reconoció cambios en tres (los que acabamos de crear).
 Lo que podemos hacer es agregar todo los archivos que tienen cambios de una vez con el comando `git add .` pero para este ejemplo primero sólo agregremos uno de los archivos y posteriomente los otros dos.
 	
-	git add archivo2.txt
+	$ git add archivo2.txt
 
+<br>
 
-Si ejecutamos un `git status` podremos ver que sólo un archivo, en este caso archivo2.txt, está listo para hacer un commit y los otros dos aún están pendientes de agregarse al staged area.
+Si ejecutamos `git status` podremos ver que sólo un archivo, en este caso archivo2.txt, está listo para hacer un commit y los otros dos aún están pendientes de agregarse al área de preparación.
 
-	git status
+	$ git status
 	On branch master
 	Changes to be committed:
 	  (use "git reset HEAD <file>..." to unstage)
@@ -146,13 +156,19 @@ Si ejecutamos un `git status` podremos ver que sólo un archivo, en este caso ar
 	        archivo3.txt
 	        archivo4.txt
 
-Esto sería útil cuando sabemos que el archivo que modificamos ya está listo y no necesita nada más y queremos confirmarlo lo antes posible para, por ejemplo, dejarlo en producción. Mientras que a los otros dos aún les puedo seguir haciendo cambios.
-Entonces le damos un commit al archivo2.txt y sólo nos quedarían los otros dos archivos.
+Esto sería útil cuando sabemos que el archivo que modificamos ya está listo y no necesita nada más y queremos confirmarlo lo antes posible para, por ejemplo, dejarlo en producción. Mientras que a los otros dos aún les podemos seguir haciendo cambios.
+Entonces le damos un commit al "archivo2.txt" y sólo nos quedarían los otros dos archivos.
+
+	$ git commit archivo2.txt
+
+<br>
 
 Ahora para agregar todos los archivos que tienen modificaciones, sí ejecutaremos `git add .`.
-Podemos ver que los archivos están listos para hacer un commit
+Podemos ver que los archivos están listos para hacer un commit.
 
-	git status
+	$ git add .
+
+	$ git status
 	On branch master
 	Changes to be committed:
 	  (use "git reset HEAD <file>..." to unstage)
@@ -160,68 +176,84 @@ Podemos ver que los archivos están listos para hacer un commit
 	        new file:   archivo3.txt
 	        new file:   archivo4.txt
 
-Se podría hacer un commit por cada archivo como lo hicimos con el archivo2.txt pero en este caso quiero que ambos pertenezcan al mismo commit, así que no especificaré el nombre.
+<br>
 
-	git commit -m "Agregando archivos 3 y 4"
+Se podría hacer un commit por cada archivo como lo hicimos con el archivo2.txt pero en este caso queremos que ambos pertenezcan al mismo commit, así que no especificaremos el nombre.
+
+	$ git commit -m "Agregando archivos 3 y 4"
 	[master df5f162] Agregando archivos 3 y 4
 	 2 files changed, 2 insertions(+)
 	 create mode 100644 archivo3.txt
 	 create mode 100644 archivo4.txt
 
+<br>
 
-Ahora al consultar git log mostrará los tres commit que hemos hecho por el momento.
+Ahora al consultar con `git log --oneline` mostrará los tres commit que hemos hecho por el momento.
 
-	git log --oneline
+	$ git log --oneline
 	df5f162 (HEAD -> master) Agregando archivos 3 y 4
 	f552bbb agregando archivo2.txt
 	f154089 Mi primer commit
 
+<br>
 
-Veremos ahora unos casos prácticos de uso.
+
+## Casos prácticos de uso.
+
 Por ejemplo, que pasa si no tenemos git y estamos trabajando un archivo y por alguna razón borramos parte o todo el contenido del archivo y guardamos los cambios?
-Perdimos la info. Veámoslo de la siguiente forma.
-Voy a copiar un script y lo voy a agregar al repositorio y luego lo editaré.
+***¡¡¡Perdimos la info!!!*** ... Veámoslo de la siguiente forma.
+Vamos a copiar un script básico, lo agregaremos al repositorio y luego lo editaremos.
 
-	cp ../ingrese_edad.sh .
-	git add ingrese_edad.sh
-	git commit -m "Script que valida edad"
+	$ cp ../valida_edad.sh .
+	$ git add valida_edad.sh
+	$ git commit -m "Script que valida edad"
 	[master 36a4c4d] Script que valida edad
 	 1 file changed, 6 insertions(+)
-	 create mode 100644 ingrese_edad.sh
+	 create mode 100644 valida_edad.sh
 
-Ahora en una situación normal, perdí parte del script porque como buen admin no hice el respaldo del archivo.
-Para nuestra suerte git nos reconoció que hubo un cambio en el archivo quel él tenía bajo seguimiento y al hacer un git status nos dirá que bien podemos preparar el archivo añadiéndolo al staged area o revertir el cambio que sufrió el archivo con `git checkout -- ingrese_edad.sh`
+Ahora en una situación normal si borramos parte de la información del archivo... Perdimos parte del script, porque como buen admin no hicimos el respaldo del archivo.
+Para nuestra suerte git nos reconoció que hubo un cambio en el archivo que él tenía bajo seguimiento y al hacer un git status nos dirá que bien podemos preparar el archivo añadiéndolo al área de preparación o revertir el cambio que sufrió el archivo con `git checkout -- valida_edad.sh`
 
-	git checkout -- ingrese_edad.sh
+	$ git checkout -- valida_edad.sh
 
 Revisamos el archivo y veremos que ha vuelto a su estado original.
 Y `git status` nos dirá que nuestro directorio de trabajo está limpio.
 
-	git status
+	$ git status
+	On branch master
+	nothing to commit (working directory clean)
 
-Si por otro motivo, modificamos el archivo, le borramos parte del contenido y además lo preparamos para luego hacer un commit, el comando `git checkout --` no nos servirá.
-Para esto git también nos recomienda antes de hacer un commit que podemos quitarlo del área de preparación.
+<br>
 
-	git reset HEAD ingrese_edad.sh
+Si por otro motivo, modificamos el archivo, le borramos parte del contenido y además lo preparamos con `git add` para luego hacer un commit, el comando `git checkout --` no nos servirá.
+Para esto git también nos recomienda antes de hacer un commit que podemos quitarlo del área de preparación con el comando `git reset HEAD`.
+
+	$ git reset HEAD valida_edad.sh
 
 Veremos que con git status el archivo ya no está en el área de preparación sino que nos ha notificado que se modificó, en este momento podremos ejecutar `git checkout --` para revertir los cambios realizados al archivo.
 
-	git checkout -- ingrese_edad.sh
-	cat ingrese_edad.sh
+	$ git checkout -- valida_edad.sh
+	$ cat valida_edad.sh
 
 Como ven git en la mayoría de las veces nos recomendará cosas antes de ponernos a hacer commits y sólo es cosa de leer.
 
-Este último comando que nos recomendó git (git reset) es un poco peligroso porque si bien nos ayuda a recuperar cambios, también destruye commit en el tiempo.
-Este es un ejemplo. Digamos que modificamos el script y estamos seguros de los cambios, los guardamos e hicimos su commit.
+<br>
 
-	git commit -am "Modificando script de edad"
+## Eliminando un commit
+
+Este último comando que nos recomendó git (git reset) es un poco peligroso porque si bien nos ayuda a recuperar cambios, también destruye commit en el tiempo.
+Este es un ejemplo; Digamos que modificamos el script y estamos seguros de los cambios, los guardamos e hicimos su commit.
+
+	$ git commit -am "Modificando script de edad"
 	[master 1ca1bad] Modificando script de edad
 	 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Pero claro al ejecutar el script no funciona, ahora lo que podemos hacer, y es una de las características de los sistemas de control de versiones, es que podemos volver en el tiempo un cambio.
+Pero claro al ejecutar el script no funciona por los cambios que efectuamos, ahora lo que podemos hacer, y es una de las características de los sistemas de control de versiones, es que podemos volver en el tiempo un cambio.
+
 
 Veamos el historial de commit.
-	git log --oneline
+
+	$ git log --oneline
 	1ca1bad (HEAD -> master) Modificando script de edad
 	36a4c4d Script que valida edad
 	df5f162 Agregando archivos 3 y 4
@@ -230,89 +262,99 @@ Veamos el historial de commit.
 
 Sabemos que en el commit anterior el archivo funcionaba bien, entonces lo que podemos hacer son dos cosas:
 
-1.- Podemos volver en el tiempo el archivo específico que está con problemas.
+  - Podemos volver en el tiempo el archivo específico que está con problemas.
+  - Podemos volver en el tiempo al punto donde nuestro proyecto estaba funcionando correctamente.
 
-2.- Podemos volver en el tiempo al punto donde nuestro proyecto estaba funcionando correctamente.
+<br>
 
+### Para el primer caso podemos hacer lo siguiente
 
-Para el primer caso podemos hacer lo siguiente:
+Como sabemos que en nuestro proyecto, sólo el archivo "valida_edad.sh" es el que tiene problemas, podemos ir al commit donde estaba funcionando bien y traer de vuelta sólo ese archivo con el comando `git checkout "ID_COMMIT" archivo`
 
-Como sabemos que en nuestro proyecto, sólo el archivo ingrese_edad.sh es el que tiene problemas, podemos ir al commit donde estaba funcionando bien y traer de vuelta sólo ese archivo con el comando `git checkout "ID_COMMIT" archivo`
+	$ git checkout 36a4c4d valida_edad.sh
 
-	git checkout 36a4c4d ingrese_edad.sh
+Al ejecutarlo el archivo tendrá la misma información que tenía en ese commit y podremos realizar un nuevo commit indicando que se corrigió el archivo.
 
-Al hacer el archivo tendrá la misma información que tenía en ese commit y podremos realizar un nuevo commit indicando que se corrigió el archivo.
-
-	git commit -m "Se corrige script de edad" ingrese_edad.sh
-	[master 7bda560] Se corrige script de edad
+	$ git commit -m "Se recupera script de edad" valida_edad.sh
+	[master 7bda560] Se recupera script de edad
 	 1 file changed, 1 insertion(+), 1 deletion(-)
 
+<br>
 
-Para el segundo caso podemos hacer lo siguiente:
+### Para el segundo caso podemos hacer lo siguiente
 
 Con el comando `git reset` agregándole el commit donde estaba funcionando todo bien, podremos volver en el tiempo a ese punto de nuestro proyecto.
 
-	git reset 36a4c4d
+	$ git reset 36a4c4d
 	Unstaged changes after reset:
-	M       ingrese_edad.sh
+	M       valida_edad.sh
 
 
 Al ejecutar un git status notificará que el archivo tuvo un cambio y lo podremos recuperar como lo vimos anteriormente con `git checkout --` y listo.
 
-	git checkout -- ingrese_edad.sh
+	$ git checkout -- valida_edad.sh
+
+<br>
+
+#### Principales diferencias entre estas opciones
+   
+   - La primera es menos invasiva puesto que sólo recuperamos uno o más archivos de un punto específico y añadimos un nuevo commit para restaurarlo.
+
+   - La segunda modifica la línea del tiempo y esto en ocaciones puede no ser muy bueno porque si habían algunos archivos con cambios en algún commit posterior del que elegimoa para volver, se perderán. :sweat:
 
 
-Principales diferencias entre estas opciones, la primera es menos invasiva puesto que sólo recupero uno o más archivos de un punto específico y añado un nuevo commit para restaurarlo.
+>**Importante**: Para usar git reset se debe estar muy seguro de lo que se quiere hacer y también así conocer principalmente los parametros `--hard` y `--soft` de este comando, ya que, `--hard` hará que al elegir volver a un commit, no preguntará si se quieren agregar al área de preparación y luego hacer un commit de los cambios en los archivos, esto lo hará automáticamente cambiando el **HEAD** a dicho commit.
+Por otro lado `--soft` volverá al commit y dejará los archivos que tengan cambios listos para un nuevo commit.
 
-El segundo modifica la línea del tiempo y esto en ocaciones puede no ser muy bueno porque si habían algunos archivos con cambios en algún commit posterior del que elegí para volver, se perderán.
+<br>
 
-Para usar git reset se debe estar muy seguro de lo que se quiere hacer y también así conocer principalmente los parametros "--hard" y "--soft" de este comando, ya que, "--hard" hará que al elegir volver a un commit, no preguntará si se quieren agregar al área de preparación y luego hacer un commit de los cambios en los archivos, esto lo hará automáticamente cambiando el HEAD a dicho commit. Y "--soft" volverá al commit y dejará los archivos que tengan cambios listos para un nuevo commit.
+## Revirtiendo un commit
 
-Otro problema es que si más de una persona está trabajando con el mismo proyeto y sube sus cambios, posiblemente se tengan conflictos porque uno tendrás mas commit que el otro.
+También existe una tercera opción y posiblemente sea la más conveniente de realizar, la cual es deshacer cambios de commits sin eliminarlos con el comando `git revert`
 
+Supongamos que creamos tres nuevos archivos más un cambio en el archivo valida_edad.sh y para cada uno de ellos un commit.
 
-También existe una tercera opción y posiblemente sea la más conveniente de realizar la cual es deshacer cambios de commits sin eliminarlos con el comando `git revert`
-
-Supongamos que creé tres nuevos archivos más un cambio en el archivo ingrese_edad.sh, para cada uno de ellos un commit.
-
-	 git log --oneline
+	$ git log --oneline
 	dabe37c (HEAD -> master) Cambios en script
-	d2c8ace Se agregar archivo pruebas
-	68205bd Se agregar archivo varios
-	2cf473d Se agregar archivo archivos
+	d2c8ace Se agrega archivo5.txt
+	68205bd Se agrega archivo4.txt
+	2cf473d Se agrega archivo3.txt
 	36a4c4d Script que valida edad
 	df5f162 Agregando archivos 3 y 4
 	f552bbb agregando archivo2.txt
 	f154089 Mi primer commit
 
 
-Comparo cada uno de los commit con `git diff`, por ejemplo `git diff 36a4c4d 2cf473d` dirá que se añadió el archivo "archivos". `git diff 36a4c4d HEAD` que es lo mismo a decir diferencias entre el commit 36a4c4d y el actual, dirá que se agregaron los tres archivo y hubo una modificación en el archivo ingrese_edad.sh.
+Comparo cada uno de los commit con `git diff`, por ejemplo `git diff 36a4c4d 2cf473d` dirá que se añadió el archivo "archivo3.txt". `git diff 36a4c4d HEAD` que es lo mismo a buscar diferencias entre el commit 36a4c4d y el actual, dirá que se agregaron los tres archivos y hubo una modificación en el archivo "valida_edad.sh".
 
 Lo que se podría hacer es un `git revert` por cada uno pero cada vez que se ejecuta un revert, se tendrá que crear un commit, lo que puede causar mucho desorden en nuestra línea de tiempo.
 
-Para tal caso al comando se le puede pasar el parametro `-n` o `--no-commit`
+Para tal caso al comando se le puede pasar el parametro `-n` o `--no-commit` y finalmente `git revert --continue` que lo recomienda el mismo git.
 
-	git revert -n dabe37c d2c8ace 68205bd 2cf473d
-	git revert --continue
+	$ git revert -n dabe37c d2c8ace 68205bd 2cf473d
+	$ git revert --continue
 
-	 git log --oneline
+	$ git log --oneline
 	226c239 (HEAD -> master) Revert "Se revierten los últimos 4 commits"
 	dabe37c Cambios en script
-	d2c8ace Se agregar archivo pruebas
-	68205bd Se agregar archivo varios
-	2cf473d Se agregar archivo archivos
+	d2c8ace Se agrega archivo5.txt
+	68205bd Se agrega archivo4.txt
+	2cf473d Se agrega archivo3.txt
 	36a4c4d Script que valida edad
 	df5f162 Agregando archivos 3 y 4
 	f552bbb agregando archivo2.txt
-	f154089 (tag: Prueba_V1) Mi primer commit
+	f154089 Mi primer commit
 
-Nuestro directorio de trabajo quedará como lo teníamos antes sin perder los commits que quizas a otra persona le parecieron buenos.
+Nuestro directorio de trabajo quedará como lo teníamos en el commit **36a4c4d** sin perder los commits posteriores que quizas a otra persona le parecieron buenos.
 
+<br>
+
+## Inspeccionar un commit
 
 Otra cosa que nos permite hacer git es ir a un commit en particular y ver como estaba nuestro proyecto en ese momento, es como ir a inspeccionar que se hizo en ese punto de la línea de tiempo.
 El comando para esto es `git checkout` seguido del commit al que queremos ir.
 
-	git checkout 2cf473d
+	$ git checkout 2cf473d
 	Note: checking out '2cf473d'.
 
 	You are in 'detached HEAD' state. You can look around, make experimental
@@ -326,12 +368,12 @@ El comando para esto es `git checkout` seguido del commit al que queremos ir.
 
 	HEAD is now at 2cf473d... Se agregar archivo archivos
 
+<br>
+
 Si ejecutamos el comando `git branch` veremos que ya no estamos en la rama "master", sino en una temporal con el nombre del commit.
 
 	git branch
 	* (HEAD detached at 2cf473d)
 	  master
 
-Desde este punto del tiempo podemos revisar cada archivo y si hacemos algún cambio no afectará a nuestra rama master, ya que, como dije es una rama temporal. Es más, al momento de crear la rama temporal nos sugiere que para hacer guardar los commit que hagamos, creemos una nueva rama con el comando `git checkout -b nombre_de_la_rama`.
-
-
+Desde este punto del tiempo podemos revisar cada archivo y si hacemos algún cambio no afectará a nuestra rama master, ya que, como dije es una rama temporal. Es más, al momento de crear la rama temporal nos sugiere que para guardar los commit que hagamos, creemos una nueva rama con el comando `git checkout -b nombre_de_la_rama`.
