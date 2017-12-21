@@ -1,32 +1,42 @@
-Que es git?
-Git es un control de versiones distribuido, que quiere decir esto de distribuido.
-Bueno, quiere decir que no hay un servidor central como tal, varias personas tienen una copia del repositorio y así pueden contribuir con un proyecto en particular o bien usar su proyecto como un repositorio para otras personas.
+# ¿Qué es git?
+
+Git es un control de versiones distribuido. Qué quiere decir esto de distribuido?
+Quiere decir que no hay un servidor central como tal, varias personas tienen una copia del repositorio y así pueden contribuir con el proyecto o bien usar su proyecto como un repositorio para otras personas.
 
 
-Git se basa en tres estados.
+# Estados de git
 
-Modificado
-Preparado
-Confirmado
+Git se basa en tres estados:
 
+* Modificado (modified)
+* Preparado (added)
+* Confirmado (committed)
+
+<br>
+
+## Inicializar un directorio
 
 Lo primero que haremos será inicializar un directorio como un repositorio git.
-Para esto crearemos una directorio cualquiera y ejecutaremos "git init"
+Para esto crearemos una directorio cualquiera y ejecutaremos `git init`.
 
-	mkdir mi_proyecto; cd mi_proyecto
-	git init
-
+	$ mkdir mi_proyecto; cd mi_proyecto
+	$ git init
 
 Con esto tenemos nuestro directorio inicializado.
-Lo podemos ver ya que, se creó un directorio oculto .git
-Este directorio contiene toda la configuración necesaria para usar git.
+Lo podemos ver, ya que, se creó un directorio oculto .git, este directorio contiene toda la configuración necesaria para usar git.
 
-Lo que vamos a ver ahora son los tres estados de git.
+<br>
+
+## Primer estado (Modificado)
+
+Lo que vamos a ver ahora es el primer estado de git.
 Para ello empezaremos por crear un archivo nuevo y le añadiremos contenido.
 
-	echo "Hola Mundo" > archivo.txt
+	$ echo "Hola Mundo" > archivo.txt
 
-Git automáticamente reonocerá que se hizo un cambio y lo podremos ver con el comando git status.
+<br>
+
+Git automáticamente reonocerá que se hizo un cambio y lo podremos ver con el comando `git status`.
 
 	$ git status
 	On branch master
@@ -40,14 +50,18 @@ Git automáticamente reonocerá que se hizo un cambio y lo podremos ver con el c
 
 	nothing added to commit but untracked files present (use "git add" to track)
 
-Como pueden ver, git dice que hay un archivo que no tiene seguimiento (archivo.txt) y que para agregar un archivo para que tenga seguimiento se use el comando "git add".
+<br>
+
+## Segundo estado (Preparado)
+
+Como pueden ver, git dice que hay un archivo que no tiene seguimiento (Untracked) y para agregar un archivo y que tenga seguimiento se use el comando `git add`.
 
 	git add archivo.txt
 
+<br>
 
-
-Ejecutamos nuevamente git status y vremos que ahora el archivo está preparado pero aún no hay commit.
-También git nos dirá que si queremos quitar el archivo añadido del stage, podemos ejecutar la opción git rm --cached archivo.txt
+Ejecutamos nuevamente git status y veremos que ahora el archivo está "preparado" pero aún no hay commit.
+También git nos dirá que si queremos quitar el archivo añadido al área de preparación, podemos ejecutar el comando `git rm --cached <file>`
 
 	$ git status
 	On branch master
@@ -62,12 +76,15 @@ También git nos dirá que si queremos quitar el archivo añadido del stage, pod
 
 Si ejecutamos esto último, el arhivo nuevamente indicará que no tiene seguimiento.
 
+<br>
+
+## Tercer estado (Confirmado)
 
 Ahora lo que haremos será un commit del archivo, un commit generará un punto en el tiempo del cual podremos consultar modificaciones o volver diretamente en él pero eso lo veremos más adelante.
-Si se fijan en el mensaje que arroja, entregará información como por ejemplo, desde que rama se hizo el commit (en este caso desde master), le asignará un ID único, este hash es mucho más largo de lo que se muestra ahí pero git permite trabajar con los 7 primeros caracteres de un commit y también cuantos archivos fueron incluidos en el commit (en este caso uno) y que el cambio fue de 1 inserción (+).
+Si se fijan en el mensaje que arroja, entregará información como por ejemplo; desde que rama se hizo el commit (en este caso desde master), le asignará un ID único, este hash es mucho más largo de lo que se muestra ahí pero git permite trabajar con los 7 primeros caracteres de un commit y también cuantos archivos fueron incluidos en el commit (en este caso uno) y que el cambio fue de `1 inserción (+)`.
 
 
-	git commit archivo.txt
+	$ git commit archivo.txt
 
 	warning: LF will be replaced by CRLF in archivo.txt.
 	The file will have its original line endings in your working directory.
@@ -75,27 +92,30 @@ Si se fijan en el mensaje que arroja, entregará información como por ejemplo, 
 	 1 file changed, 1 insertion(+)
 	 create mode 100644 archivo.txt
 
-
-
-Al ejecutar "git commit" se abrirá el editor de texto predeterminado que tengamos, en mi caso el vi y aquí tendremos que poner un título y una descripción.
+Al ejecutar `git commit` se abrirá el editor de texto predeterminado que tengamos, en mi caso "vi" y aquí tendremos que poner un título y una descripción.
 Esto nos servirá para saber que se hizo en ese commit, quien lo hizo y en que horario.
 Posiblemente si no han configurado su usuario y correo, git lo solicitará antes de hacer un commit, pues como dije el commit debe mostrar quien hizo el cambio.
 
 	git config --global user.name "Usuario"
 	git config --global user.email "Correo"
 
+<br>
 
-Esto cumple los tres estados de git, modificar el archivo, preparar el archivo agregándolo al staged área (git add) y confirmo los el cambio generando un commit (git commit).
+Esto cumple los tres estados de git, modificar el archivo, preparar el archivo agregándolo al área de preparación (git add) y confirmar el cambio generando un commit (git commit).
+
+<br>
+
+## Histórico de commits 
 
 Cada commit queda registrado y lo podemos ver con el comando git log.
 git log tiene muchas opciones, ya que, permite buscar por ejemplo los últimos 3 commit, o los commit que hizo cierta persona, filtrar por fechas, etc.
-Para más información git log --help los enviará al manual del comando.
+Para más información `git log --help` los enviará al manual del comando.
 
-	git log
+	$ git log
 
 Para una mirada un poco más limpia podemos ejecutar el comando git log con el parámetro --oneline.
 
-	git log --oneline
+	$ git log --oneline
 
 La vista es mucho más simple y muestra lo necesario, el ID del commit, el comentario del commit, si tuviese un tag también lo mostraría.
 Un tag es un identificador que le podemos dar al commit para no tener que acordarnos del id que se crea por defecto y simplificarnos un poco más la lectura.
