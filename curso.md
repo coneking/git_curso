@@ -1,6 +1,6 @@
 # ¿Qué es git?
 
-Git es un control de versiones distribuido. Qué quiere decir esto de distribuido?
+Git es un control de versiones distribuido. ¿Qué quiere decir esto de distribuido?
 Quiere decir que no hay un servidor central como tal, varias personas tienen una copia del repositorio y así pueden contribuir con el proyecto o bien usar su proyecto como un repositorio para otras personas.
 
 
@@ -17,13 +17,13 @@ Git se basa en tres estados:
 ## Inicializar un directorio
 
 Lo primero que haremos será inicializar un directorio como un repositorio git.
-Para esto crearemos una directorio cualquiera y ejecutaremos `git init`.
+Para esto crearemos un directorio cualquiera y ejecutaremos `git init`.
 
 	$ mkdir mi_proyecto; cd mi_proyecto
 	$ git init
 
 Con esto tenemos nuestro directorio inicializado.
-Lo podemos ver, ya que, se creó un directorio oculto .git, este directorio contiene toda la configuración necesaria para usar git.
+Lo podemos ver, ya que, se creó un directorio oculto `.git`, este directorio contiene toda la configuración necesaria para usar git.
 
 <br>
 
@@ -36,7 +36,7 @@ Para ello empezaremos por crear un archivo nuevo y le añadiremos contenido.
 
 <br>
 
-Git automáticamente reonocerá que se hizo un cambio y lo podremos ver con el comando `git status`.
+Git automáticamente reconocerá que se hizo un cambio y lo podremos ver con el comando `git status`.
 
 	$ git status
 	On branch master
@@ -61,7 +61,7 @@ Como pueden ver, git dice que hay un archivo que no tiene seguimiento (Untracked
 <br>
 
 Ejecutamos nuevamente git status y veremos que ahora el archivo está "preparado" pero aún no hay commit.
-También git nos dirá que si queremos quitar el archivo añadido al área de preparación, podemos ejecutar el comando `git rm --cached <file>`
+También git nos dirá qué si queremos quitar el archivo añadido al área de preparación, podemos ejecutar el comando `git rm --cached <file>`
 
 	$ git status
 	On branch master
@@ -74,13 +74,13 @@ También git nos dirá que si queremos quitar el archivo añadido al área de pr
 	        new file:   archivo.txt
 
 
-Si ejecutamos esto último, el arhivo nuevamente indicará que no tiene seguimiento.
+Si ejecutamos esto último, el archivo nuevamente indicará que no tiene seguimiento.
 
 <br>
 
 ## Tercer estado (Confirmado)
 
-Ahora lo que haremos será un commit del archivo, un commit generará un punto en el tiempo del cual podremos consultar modificaciones o volver diretamente en él pero eso lo veremos más adelante.
+Ahora lo que haremos será un commit del archivo, un commit generará un punto en el tiempo del cual podremos consultar modificaciones o volver directamente en él pero eso lo veremos más adelante.
 Si se fijan en el mensaje que arroja, entregará información como por ejemplo; desde que rama se hizo el commit (en este caso desde master), le asignará un ID único, este hash es mucho más largo de lo que se muestra ahí pero git permite trabajar con los 7 primeros caracteres de un commit y también cuantos archivos fueron incluidos en el commit (en este caso uno) y que el cambio fue de `1 inserción (+)`.
 
 
@@ -130,12 +130,12 @@ Un tag es un identificador que le podemos dar al commit para no tener que acorda
 
 ## Agregando más commits
 
-Dígamos ahora que tenemos más archivos.
+Digamos ahora que tenemos más archivos.
 	
 	for i in archivo2.txt archivo3.txt archivo4.txt; do echo "línea de prueba" >> $i; done
 
-Ahora en nuestro directorio de trabajo tenemos cuatro archivos pero git sólo reconoció cambios en tres (los que acabamos de crear).
-Lo que podemos hacer es agregar todo los archivos que tienen cambios de una vez con el comando `git add .` pero para este ejemplo primero sólo agregremos uno de los archivos y posteriomente los otros dos.
+Ahora en nuestro directorio de trabajo tenemos cuatro archivos, sin embargo, git sólo reconoció cambios en tres (los que acabamos de crear).
+Lo que podemos hacer es agregar todo los archivos que tienen cambios de una vez con el comando `git add .` pero para este ejemplo primero sólo agregaremos uno de los archivos y posteriormente los otros dos.
 	
 	$ git add archivo2.txt
 
@@ -200,7 +200,7 @@ Ahora al consultar con `git log --oneline` mostrará los tres commit que hemos h
 
 ## Casos prácticos de uso.
 
-Por ejemplo, que pasa si no tenemos git y estamos trabajando un archivo y por alguna razón borramos parte o todo el contenido del archivo y guardamos los cambios?
+¿Por ejemplo, que pasa si no tenemos git y estamos trabajando un archivo y por alguna razón borramos parte o todo el contenido del archivo y guardamos los cambios?
 ***¡¡¡Perdimos la info!!!*** ... Veámoslo de la siguiente forma.
 Vamos a copiar un script básico, lo agregaremos al repositorio y luego lo editaremos.
 
@@ -230,7 +230,7 @@ Para esto git también nos recomienda antes de hacer un commit que podemos quita
 
 	$ git reset HEAD valida_edad.sh
 
-Veremos que con git status el archivo ya no está en el área de preparación sino que nos ha notificado que se modificó, en este momento podremos ejecutar `git checkout --` para revertir los cambios realizados al archivo.
+Veremos que con git status el archivo ya no está en el área de preparación, sino que nos ha notificado que se modificó, en este momento podremos ejecutar `git checkout --` para revertir los cambios realizados al archivo.
 
 	$ git checkout -- valida_edad.sh
 	$ cat valida_edad.sh
@@ -269,7 +269,7 @@ Sabemos que en el commit anterior el archivo funcionaba bien, entonces lo que po
 
 ### Para el primer caso podemos hacer lo siguiente
 
-Como sabemos que en nuestro proyecto, sólo el archivo "valida_edad.sh" es el que tiene problemas, podemos ir al commit donde estaba funcionando bien y traer de vuelta sólo ese archivo con el comando `git checkout "ID_COMMIT" archivo`
+Como sabemos que, en nuestro proyecto, sólo el archivo "valida_edad.sh" es el que tiene problemas, podemos ir al commit donde estaba funcionando bien y traer de vuelta sólo ese archivo con el comando `git checkout "ID_COMMIT" archivo`
 
 	$ git checkout 36a4c4d valida_edad.sh
 
@@ -300,10 +300,10 @@ Al ejecutar un git status notificará que el archivo tuvo un cambio y lo podremo
    
    - La primera es menos invasiva puesto que sólo recuperamos uno o más archivos de un punto específico y añadimos un nuevo commit para restaurarlo.
 
-   - La segunda modifica la línea del tiempo y esto en ocaciones puede no ser muy bueno porque si habían algunos archivos con cambios en algún commit posterior del que elegimoa para volver, se perderán. :sweat:
+   - La segunda modifica la línea del tiempo y esto en ocasiones puede no ser muy bueno porque si habían algunos archivos con cambios en algún commit posterior del que elegimos para volver, se perderán. :sweat:
 
 
->**Importante**: Para usar git reset se debe estar muy seguro de lo que se quiere hacer y también así conocer principalmente los parametros `--hard` y `--soft` de este comando, ya que, `--hard` hará que al elegir volver a un commit, no preguntará si se quieren agregar al área de preparación y luego hacer un commit de los cambios en los archivos, esto lo hará automáticamente cambiando el **HEAD** a dicho commit.
+>**Importante**: Para usar git reset se debe estar muy seguro de lo que se quiere hacer y también así conocer principalmente los parámetros `--hard` y `--soft` de este comando, ya que, `--hard` hará que al elegir volver a un commit, no preguntará si se quieren agregar al área de preparación y luego hacer un commit de los cambios en los archivos, esto lo hará automáticamente cambiando el **HEAD** a dicho commit.
 Por otro lado `--soft` volverá al commit y dejará los archivos que tengan cambios listos para un nuevo commit.
 
 <br>
@@ -325,11 +325,11 @@ Supongamos que creamos tres nuevos archivos más un cambio en el archivo valida_
 	f154089 Mi primer commit
 
 
-Comparo cada uno de los commit con `git diff`, por ejemplo `git diff 36a4c4d 2cf473d` dirá que se añadió el archivo "archivo3.txt". `git diff 36a4c4d HEAD` que es lo mismo a buscar diferencias entre el commit 36a4c4d y el actual, dirá que se agregaron los tres archivos y hubo una modificación en el archivo "valida_edad.sh".
+Comparo cada uno de los commit con `git diff`, por ejemplo, `git diff 36a4c4d 2cf473d` dirá que se añadió el archivo "archivo3.txt". `git diff 36a4c4d HEAD` que es lo mismo a buscar diferencias entre el commit 36a4c4d y el actual, dirá que se agregaron los tres archivos y hubo una modificación en el archivo "valida_edad.sh".
 
-Lo que se podría hacer es un `git revert` por cada uno pero cada vez que se ejecuta un revert, se tendrá que crear un commit, lo que puede causar mucho desorden en nuestra línea de tiempo.
+Lo que se podría hacer es un `git revert` por cada uno, pero cada vez que se ejecuta un revert, se tendrá que crear un commit, lo que puede causar mucho desorden en nuestra línea de tiempo.
 
-Para tal caso al comando se le puede pasar el parametro `-n` o `--no-commit` y finalmente `git revert --continue` que lo recomienda el mismo git.
+Para tal caso al comando se le puede pasar el parámetro `-n` o `--no-commit` y finalmente `git revert --continue` que lo recomienda el mismo git.
 
 	$ git revert -n dabe37c d2c8ace 68205bd 2cf473d
 	$ git revert --continue
@@ -345,7 +345,7 @@ Para tal caso al comando se le puede pasar el parametro `-n` o `--no-commit` y f
 	f552bbb agregando archivo2.txt
 	f154089 Mi primer commit
 
-Nuestro directorio de trabajo quedará como lo teníamos en el commit **36a4c4d** sin perder los commits posteriores que quizas a otra persona le parecieron buenos.
+Nuestro directorio de trabajo quedará como lo teníamos en el commit **36a4c4d** sin perder los commits posteriores que quizás a otra persona le parecieron buenos.
 
 <br>
 

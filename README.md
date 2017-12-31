@@ -37,7 +37,7 @@ Para atacar este problema se crearon los **DVCS** (Distributed Version Control S
 <br>
 
 <p align="center">
-<img src="https://github.com/coneking/git_curso/blob/desarrollo/images/DVCS.png">
+<img src="https://raw.githubusercontent.com/coneking/git_curso/desarrollo/images/DVCS.png">
 </p>
 
 >Repositorio clonado en ComputerA y ComputerB.
@@ -45,7 +45,7 @@ Para atacar este problema se crearon los **DVCS** (Distributed Version Control S
 <br>
 <br>
 
-![alt text](https://github.com/coneking/git_curso/blob/desarrollo/images/GitLogo.png)
+![alt text](https://raw.githubusercontent.com/coneking/git_curso/desarrollo/images/GitLogo.png)
 
 <br>
 
@@ -62,7 +62,7 @@ Simplemente revisará que no se hicieron cambios y hará una referencia al archi
 <br>
 
 <p align="center">
-<img src="https://github.com/coneking/git_curso/blob/desarrollo/images/Fundamento.png">
+<img src="https://raw.githubusercontent.com/coneking/git_curso/desarrollo/images/Fundamento.png">
 </p>
 
 >La imagen muestra que en la segunda versión del proyecto hubieron cambios en los archivos A y C pero B no fue modificado por lo cual se hace una referencia del archivo B de la instantánea anterior.
