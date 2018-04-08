@@ -92,4 +92,8 @@ git add mi_archivo.txt
 git commit -m "Mi primer commit" mi_archivo.txt
 ```
 
+<br>
 
+## Curso
+
+Para entender mejor como funciona git vamos directo a los casos prácticos en el siguiente [curso](/curso.md).
