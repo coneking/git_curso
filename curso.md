@@ -377,3 +377,9 @@ Si ejecutamos el comando `git branch` veremos que ya no estamos en la rama "mast
 	  master
 
 Desde este punto del tiempo podemos revisar cada archivo y si hacemos algún cambio no afectará a nuestra rama master, ya que, como dije es una rama temporal. Es más, al momento de crear la rama temporal nos sugiere que para guardar los commit que hagamos, creemos una nueva rama con el comando `git checkout -b nombre_de_la_rama`.
+
+<br>
+
+## Más de git!!!
+
+Ya que en este punto hemos hablado mucho de las **ramas** podemos pasar a la segunda parte, en la cual abordaremos temas como "github", "ramas", "push y pull", "repositorios remotos", "clonar", etc. Todo en el siguiente [link](/curso2.md).
